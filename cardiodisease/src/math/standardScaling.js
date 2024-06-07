@@ -34,6 +34,8 @@ export const standardScaling = (dAge, dSex, dHeight, dWeight, dLoBp, dHiBp) =>{
         return (x - stats[i].mean)/(stats[i].sd) 
     });
 
+    console.log(scaledData);
+    
     return scaledData;
 
 

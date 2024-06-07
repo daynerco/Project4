@@ -7,6 +7,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
+import { standardScaling } from "../math/standardScaling";
+
 
 const InfoInputs = () =>{
 
@@ -20,6 +22,10 @@ const InfoInputs = () =>{
     const handleChange = (event, setter) => {
       setter(event.target.value);
       console.log(event.target.value)
+    };
+
+    const handlePredict = (e) =>{
+        standardScaling(age, sex, height, weight, loBp, hiBp);
     };
 
     // Inputs Needed: age gender height weight ap_hi ap_lo
@@ -93,7 +99,7 @@ const InfoInputs = () =>{
                     <TextField id="outlined-search" label="Search field" type="search" />
                 </div>
 
-                <Button variant="contained" size="medium">
+                <Button onClick = {handlePredict} variant="contained" size="medium">
                     Predict!
                 </Button>
             </Box>
