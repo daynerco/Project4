@@ -8,6 +8,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { standardScaling } from "../math/standardScaling";
+import DL from "../ML/DL.js"
 
 
 const InfoInputs = () =>{
@@ -19,13 +20,15 @@ const InfoInputs = () =>{
     const [loBp, setLoBp] = useState('');
     const [hiBp, sethiBp] = useState('');
 
+    const [scaledDataState, setScaledData] = useState();
+
     const handleChange = (event, setter) => {
       setter(event.target.value);
-      console.log(event.target.value)
     };
 
     const handlePredict = (e) =>{
-        standardScaling(age, sex, height, weight, loBp, hiBp);
+        const scaledData  = standardScaling(age, sex, height, weight, loBp, hiBp);
+        setScaledData(scaledData);
     };
 
     // Inputs Needed: age gender height weight ap_hi ap_lo
@@ -50,7 +53,7 @@ const InfoInputs = () =>{
                     onChange={(e) => handleChange(e, setAge)}
                     />
                      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                        <InputLabel id="demo-simple-select-standard-label">Age</InputLabel>
+                        <InputLabel id="demo-simple-select-standard-label">Sex</InputLabel>
                         <Select
                             required
                             labelId="demo-simple-select-label"
@@ -102,6 +105,7 @@ const InfoInputs = () =>{
                 <Button onClick = {handlePredict} variant="contained" size="medium">
                     Predict!
                 </Button>
+                <DL scaledDataState = {scaledDataState}></DL>
             </Box>
         </div>
     )

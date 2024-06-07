@@ -1,6 +1,7 @@
 export const standardScaling = (dAge, dSex, dHeight, dWeight, dLoBp, dHiBp) =>{
 
     dSex = dSex === 'M'? 2 : 1;
+    dAge = dAge * 365;
 
     const age = {
         'mean': 19469.4366,
@@ -34,8 +35,6 @@ export const standardScaling = (dAge, dSex, dHeight, dWeight, dLoBp, dHiBp) =>{
         return (x - stats[i].mean)/(stats[i].sd) 
     });
 
-    console.log(scaledData);
-    
     return scaledData;
 
 
