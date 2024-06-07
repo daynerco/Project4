@@ -43,13 +43,14 @@ const InfoInputs = () =>{
                 noValidate
                 autoComplete="off"
                 >
-                <div>
+                <div style = {{height: "150px", display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap"}}>
                     <TextField
                     required
                     id="outlined-number"
                     type="number"
                     label="Age"
                     value={age}
+                    size="large"
                     onChange={(e) => handleChange(e, setAge)}
                     />
                      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
@@ -99,7 +100,6 @@ const InfoInputs = () =>{
                         value={loBp}
                         onChange={(e) => handleChange(e, setLoBp)}
                     />
-                    <TextField id="outlined-search" label="Search field" type="search" />
                 </div>
 
                 <Button onClick = {handlePredict} variant="contained" size="medium">

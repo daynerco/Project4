@@ -24,8 +24,7 @@ const DL = ({scaledDataState}) =>{
     }, [scaledDataState]);
 
     return (<div>
-        <p>The probability of you having a cardiovascular disease is {probability}</p>
-
+        <h3>The probability of you having a cardiovascular disease is {(probability * 100).toFixed(2)} %</h3>
     </div>)
 
 };

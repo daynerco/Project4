@@ -1,7 +1,7 @@
 div.InputContainer{
     width: 1000px;
-    height: 500px;
-    background-color: white;
+    height: 350px;
+    background-color: #DCDCDC;
     border-radius: 50px;
     position: absolute; 
     border: 5px solid black;
