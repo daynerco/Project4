@@ -71,7 +71,7 @@ const InfoInputs = () =>{
                     <TextField
                         required
                         id="outlined-number"
-                        label="Height(m)"
+                        label="Height(cm)"
                         type="number"
                         value={height}
                         onChange={(e) => handleChange(e, setHeight)}
