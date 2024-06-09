@@ -26,21 +26,9 @@ function App() {
   // which mode to display.
   const [mode, setMode] = useState('Model');
 
-  //API Key Handling
-  const [showAPIKey, setshowAPIKey] = useState(false);
-  const handleClickshowAPIKey = () => setshowAPIKey((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
   const handleMode = (event, newAlignment) => {
     console.log(newAlignment)
     setMode(newAlignment);
-  };
-
-  //entering the API key
-  const [APIKey, setAPIKey] = useState(false);
-  const handleAPIChange = (e) =>{
-      setAPIKey(e.target.value);
   };
 
   //setData
@@ -48,7 +36,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const handleAPISubmit = () =>{
+  const getData = () =>{
 
         // it's loading now
         setIsLoading(true);
@@ -56,7 +44,6 @@ function App() {
           method: "GET",
           headers: {
               "Content-Type": 'application/json',
-              "x-api-key": APIKey
           }
         }).then(response => response.json())
         .then(data => {
@@ -68,8 +55,6 @@ function App() {
           setIsLoading(false);
           setError(true);
         })
-
-        
   };
 
   // data processing.
@@ -102,31 +87,9 @@ function App() {
       </ToggleButtonGroup>
       {(mode !== "Model" || null) &&
         <>
-          <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password">API Key For Vis</InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-password"
-                  type={showAPIKey ? 'text' : 'password'}
-                  style = {{backgroundColor: "white"}}
-                  onChange = {handleAPIChange}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickshowAPIKey}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {showAPIKey ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="API Key"
-                />
-            </FormControl>
-            <div style={{display: "flex", flexDirection: "column"}}>
-              <Button variant="contained" onClick={handleAPISubmit}> {!isLoading? <>Submit Key</> : <ReactLoading type={"spin"} color="#fff" height={30} width={30} />}</Button>
-              {error && <span style={{color: "red", marginLeft: "10px"}}>API Key Doesn't Exist</span>}
+            <div style={{display: "flex", flexDirection: "column", marginLeft: "10px"}}>
+              <Button variant="contained" onClick={getData} > {!isLoading? <>Get Data</> : <ReactLoading type={"spin"} color="#fff" height={30} width={30} />}</Button>
+              {error && <span style={{color: "red", marginLeft: "10px"}}>Error Getting Data</span>}
             </div>
           </>
       }
