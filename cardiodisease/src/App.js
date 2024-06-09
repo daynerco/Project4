@@ -6,20 +6,42 @@ import PieChart from './components/Graphs/PieChart';
 import BarChart from './components/Graphs/BarChart';
 import { useEffect, useState} from 'react';
 
+import InputLabel from '@mui/material/InputLabel';
 import ToggleButton from '@mui/material/ToggleButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import IconButton from '@mui/material/IconButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Button from '@mui/material/Button';
 
 
 
 function App() {
 
+  // which mode to display.
   const [mode, setMode] = useState('Visualization');
 
+  //API Key Handling
+  const [showAPIKey, setshowAPIKey] = useState(false);
+  const handleClickshowAPIKey = () => setshowAPIKey((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   const handleMode = (event, newAlignment) => {
     setMode(newAlignment);
   };
 
-  const cardioData = [
+  //entering the API key
+  const [APIKey, setAPIKey] = useState(false);
+  const handleAPIChange = (e) =>{
+      setAPIKey(e.target.value);
+  };
+
+  const [cardioData, setCardioData] = useState([
     {
         "alco": "0",
         "cholesterol": "2",
@@ -170,28 +192,40 @@ function App() {
         "id": 0,
         "age": "18393"
     }
-  ]   
+  ]  );
+
+  const handleAPISubmit = () =>{
+        let request = fetch('https://kepeuqmx53.execute-api.us-east-1.amazonaws.com/cardio/', {
+          method: "GET",
+          headers: {
+              "Content-Type": 'application/json',
+              "x-api-key": APIKey
+          }
+        }).then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+  };
+
+  // data processing.
 
   const peopleWCardio = cardioData.filter(x => x.cardio === "1");
-  console.log(peopleWCardio)
   const ageDistributionData = peopleWCardio.map(x => Math.floor(parseFloat(x.age)/365));
   const weightDistributionData = peopleWCardio.map(x => x.weight);
   const genderDistributionData = [peopleWCardio.filter(x => x.gender === "2").length, peopleWCardio.filter(x => x.gender === "1").length]
 
   const smokeDistributionData = [peopleWCardio.filter(x => x.smoke === "0").length, peopleWCardio.filter(x => x.smoke === "1").length]
-
   const alcoDistributionData = [peopleWCardio.filter(x => x.alco === "0").length, peopleWCardio.filter(x => x.alco === "1").length]
 
 
 
   return (
     <div className="App">
-        <ToggleButtonGroup
-          value={mode}
-          exclusive
-          onChange={handleMode}
-          style={{backgroundColor: "white", marginTop: "10px"}}
-        >
+      <ToggleButtonGroup
+        value={mode}
+        exclusive
+        onChange={handleMode}
+        style={{backgroundColor: "white", marginTop: "10px"}}
+      >
         <ToggleButton value="Model">
           <b>Model</b>
         </ToggleButton>
@@ -199,7 +233,30 @@ function App() {
           <b>Visualizations</b>
         </ToggleButton>
       </ToggleButtonGroup>
-
+      
+      <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">API Key For Vis</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={showAPIKey ? 'text' : 'password'}
+            style = {{backgroundColor: "white"}}
+            onChange = {handleAPIChange}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickshowAPIKey}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showAPIKey ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="API Key"
+          />
+      </FormControl>
+      <Button variant="contained" onClick={handleAPISubmit}>Submit Key</Button>
 
       {mode === "Model"? <InfoInputs></InfoInputs>:
 

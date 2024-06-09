@@ -16,7 +16,7 @@ const BoxPlot = ({cardioData, title, xtitle}) =>{
     return(<Plot
         data={data}
         layout={layout}
-        style={{width: "500px", height: "300px", margin: "10px"}}
+        style={{width: "500px", height: "300px", margin: "20px"}}
       />)
 };
 

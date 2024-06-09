@@ -12,7 +12,7 @@ div.InputContainer{
 
 div.GraphContainer{
     width: 95%;
-    height: 70%;
+    height: 80%;
     background-color: #DCDCDC;
     border-radius: 50px;
     padding-left: "50px";
@@ -24,4 +24,5 @@ div.GraphContainer{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 50px;
 }

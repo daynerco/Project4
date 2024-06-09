@@ -19,7 +19,7 @@ const BarChart = ({labels, cardioData, title, xtitle, ytitle }) => {
     <Plot
       data={plotData}
       layout={layout}
-      style={{width: "500px", height: "300px", margin: "10px" }}
+      style={{width: "500px", height: "300px", margin: "20px"}}
     />
   );
 };
