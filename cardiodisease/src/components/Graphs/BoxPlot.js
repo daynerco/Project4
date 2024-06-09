@@ -10,13 +10,13 @@ const BoxPlot = ({cardioData, title, xtitle}) =>{
     const layout = {
         title: title,
         xaxis: {title: xtitle},
-        yaxis: {title: 'Count'}
+        yaxis: {title: 'Count'},
     };
 
     return(<Plot
         data={data}
         layout={layout}
-        style={{width: "500px", height: "300px", margin: "20px"}}
+        style={{width: "500px", height: "300px", margin: "20px",}}
       />)
 };
 

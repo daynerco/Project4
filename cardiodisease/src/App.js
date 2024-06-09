@@ -6,6 +6,7 @@ import PieChart from './components/Graphs/PieChart';
 import BarChart from './components/Graphs/BarChart';
 import { useEffect, useState} from 'react';
 
+import ReactLoading from "react-loading";
 import InputLabel from '@mui/material/InputLabel';
 import ToggleButton from '@mui/material/ToggleButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -23,7 +24,7 @@ import Button from '@mui/material/Button';
 function App() {
 
   // which mode to display.
-  const [mode, setMode] = useState('Visualization');
+  const [mode, setMode] = useState('Model');
 
   //API Key Handling
   const [showAPIKey, setshowAPIKey] = useState(false);
@@ -41,160 +42,15 @@ function App() {
       setAPIKey(e.target.value);
   };
 
-  const [cardioData, setCardioData] = useState([
-    {
-        "alco": "0",
-        "cholesterol": "2",
-        "gluc": "2",
-        "gender": "1",
-        "weight": "67.0",
-        "ap_hi": "120",
-        "ap_lo": "80",
-        "smoke": "0",
-        "active": "0",
-        "cardio": "0",
-        "height": "151",
-        "id": 8,
-        "age": "21914"
-    },
-    {
-        "alco": "0",
-        "cholesterol": "1",
-        "gluc": "1",
-        "gender": "2",
-        "weight": "82.0",
-        "ap_hi": "150",
-        "ap_lo": "100",
-        "smoke": "0",
-        "active": "1",
-        "cardio": "1",
-        "height": "169",
-        "id": 3,
-        "age": "17623"
-    },
-    {
-        "alco": "0",
-        "cholesterol": "3",
-        "gluc": "1",
-        "gender": "1",
-        "weight": "64.0",
-        "ap_hi": "130",
-        "ap_lo": "70",
-        "smoke": "0",
-        "active": "0",
-        "cardio": "1",
-        "height": "165",
-        "id": 2,
-        "age": "18857"
-    },
-    {
-        "alco": "0",
-        "cholesterol": "1",
-        "gluc": "1",
-        "gender": "1",
-        "weight": "68.0",
-        "ap_hi": "110",
-        "ap_lo": "60",
-        "smoke": "0",
-        "active": "0",
-        "cardio": "0",
-        "height": "164",
-        "id": 14,
-        "age": "19834"
-    },
-    {
-        "alco": "0",
-        "cholesterol": "3",
-        "gluc": "3",
-        "gender": "2",
-        "weight": "95.0",
-        "ap_hi": "130",
-        "ap_lo": "90",
-        "smoke": "0",
-        "active": "1",
-        "cardio": "1",
-        "height": "178",
-        "id": 12,
-        "age": "22584"
-    },
-    {
-        "alco": "0",
-        "cholesterol": "3",
-        "gluc": "1",
-        "gender": "1",
-        "weight": "93.0",
-        "ap_hi": "130",
-        "ap_lo": "80",
-        "smoke": "0",
-        "active": "1",
-        "cardio": "0",
-        "height": "157",
-        "id": 9,
-        "age": "22113"
-    },
-    {
-        "alco": "0",
-        "cholesterol": "1",
-        "gluc": "1",
-        "gender": "1",
-        "weight": "56.0",
-        "ap_hi": "100",
-        "ap_lo": "60",
-        "smoke": "0",
-        "active": "0",
-        "cardio": "0",
-        "height": "156",
-        "id": 4,
-        "age": "17474"
-    },
-    {
-        "alco": "0",
-        "cholesterol": "1",
-        "gluc": "1",
-        "gender": "1",
-        "weight": "71.0",
-        "ap_hi": "110",
-        "ap_lo": "70",
-        "smoke": "0",
-        "active": "1",
-        "cardio": "0",
-        "height": "158",
-        "id": 13,
-        "age": "17668"
-    },
-    {
-        "alco": "0",
-        "cholesterol": "3",
-        "gluc": "1",
-        "gender": "1",
-        "weight": "85.0",
-        "ap_hi": "140",
-        "ap_lo": "90",
-        "smoke": "0",
-        "active": "1",
-        "cardio": "1",
-        "height": "156",
-        "id": 1,
-        "age": "20228"
-    },
-    {
-        "alco": "0",
-        "cholesterol": "1",
-        "gluc": "1",
-        "gender": "2",
-        "weight": "62.0",
-        "ap_hi": "110",
-        "ap_lo": "80",
-        "smoke": "0",
-        "active": "1",
-        "cardio": "0",
-        "height": "168",
-        "id": 0,
-        "age": "18393"
-    }
-  ]  );
+  //setData
+  const [cardioData, setCardioData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleAPISubmit = () =>{
+
+        // it's loading now
+        setIsLoading(true);
         let request = fetch('https://kepeuqmx53.execute-api.us-east-1.amazonaws.com/cardio/', {
           method: "GET",
           headers: {
@@ -202,8 +58,17 @@ function App() {
               "x-api-key": APIKey
           }
         }).then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
+        .then(data => {
+          setCardioData(data);
+          setIsLoading(false);
+        })
+        .catch(err => {
+          setIsLoading(false);
+          setError(true);
+          console.log(error);
+        })
+
+        
   };
 
   // data processing.
@@ -220,11 +85,12 @@ function App() {
 
   return (
     <div className="App">
+    <div style = {{display: "flex", justifyContent:"center", alignItems: "center", paddingTop: "10px"}}>
       <ToggleButtonGroup
         value={mode}
         exclusive
         onChange={handleMode}
-        style={{backgroundColor: "white", marginTop: "10px"}}
+        style={{backgroundColor: "white"}}
       >
         <ToggleButton value="Model">
           <b>Model</b>
@@ -256,8 +122,11 @@ function App() {
             label="API Key"
           />
       </FormControl>
-      <Button variant="contained" onClick={handleAPISubmit}>Submit Key</Button>
-
+        <div style={{display: "flex", flexDirection: "column"}}>
+          <Button variant="contained" onClick={handleAPISubmit}> {!isLoading? <>Submit Key</> : <ReactLoading type={"spin"} color="#fff" />}</Button>
+          {error && <span style={{color: "red", marginLeft: "10px"}}>API Key Doesn't Exist</span>}
+        </div>
+      </div>
       {mode === "Model"? <InfoInputs></InfoInputs>:
 
         <div className='GraphContainer'>
