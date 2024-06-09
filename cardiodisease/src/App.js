@@ -125,7 +125,7 @@ function App() {
                 />
             </FormControl>
             <div style={{display: "flex", flexDirection: "column"}}>
-              <Button variant="contained" onClick={handleAPISubmit}> {!isLoading? <>Submit Key</> : <ReactLoading type={"spin"} color="#fff" />}</Button>
+              <Button variant="contained" onClick={handleAPISubmit}> {!isLoading? <>Submit Key</> : <ReactLoading type={"spin"} color="#fff" height={30} width={30} />}</Button>
               {error && <span style={{color: "red", marginLeft: "10px"}}>API Key Doesn't Exist</span>}
             </div>
           </>
