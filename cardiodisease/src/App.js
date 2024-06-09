@@ -33,6 +33,7 @@ function App() {
     event.preventDefault();
   };
   const handleMode = (event, newAlignment) => {
+    console.log(newAlignment)
     setMode(newAlignment);
   };
 
@@ -61,11 +62,11 @@ function App() {
         .then(data => {
           setCardioData(data);
           setIsLoading(false);
+          setError(false);
         })
         .catch(err => {
           setIsLoading(false);
           setError(true);
-          console.log(error);
         })
 
         
@@ -99,33 +100,36 @@ function App() {
           <b>Visualizations</b>
         </ToggleButton>
       </ToggleButtonGroup>
-      
-      <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">API Key For Vis</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showAPIKey ? 'text' : 'password'}
-            style = {{backgroundColor: "white"}}
-            onChange = {handleAPIChange}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickshowAPIKey}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showAPIKey ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="API Key"
-          />
-      </FormControl>
-        <div style={{display: "flex", flexDirection: "column"}}>
-          <Button variant="contained" onClick={handleAPISubmit}> {!isLoading? <>Submit Key</> : <ReactLoading type={"spin"} color="#fff" />}</Button>
-          {error && <span style={{color: "red", marginLeft: "10px"}}>API Key Doesn't Exist</span>}
-        </div>
+      {(mode !== "Model" || null) &&
+        <>
+          <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">API Key For Vis</InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={showAPIKey ? 'text' : 'password'}
+                  style = {{backgroundColor: "white"}}
+                  onChange = {handleAPIChange}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickshowAPIKey}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showAPIKey ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="API Key"
+                />
+            </FormControl>
+            <div style={{display: "flex", flexDirection: "column"}}>
+              <Button variant="contained" onClick={handleAPISubmit}> {!isLoading? <>Submit Key</> : <ReactLoading type={"spin"} color="#fff" />}</Button>
+              {error && <span style={{color: "red", marginLeft: "10px"}}>API Key Doesn't Exist</span>}
+            </div>
+          </>
+      }
       </div>
       {mode === "Model"? <InfoInputs></InfoInputs>:
 
