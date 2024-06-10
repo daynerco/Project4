@@ -4,31 +4,21 @@ Shared repo for Project 4 - Data Insighters
 Topic: Heart Disease ML Analysis 
  [Tableau Visualizations] (https://public.tableau.com/views/CardiovascularDiseaseViz/SmokesbyGender?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link)
 
-**Requirements**
-Data Model Implementation (25 points)
-A Python script initializes, trains, and evaluates a model (10 points)
+**Introduction**
+Cardiovascular Disease (CVD) remains a leading cause of mortality globally. Identifying individuals at risk of developing CVD is crucial for preventive interventions. This project focuses on implementing a combination of machine learning techniques, SQL queries, and Tableau visualizations to analyze CVD risk factors and predict individuals' risk levels.
 
-The data is cleaned, normalized, and standardized prior to modeling (5 points)
+Repository Contents:
 
-The model utilizes data retrieved from SQL or Spark (5 points)
+Data:
 
-The model demonstrates meaningful predictive power at least 75% classification accuracy or 0.80 R-squared. (5 points)
+https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset/data
+SQL Queries:
 
-Data Model Optimization (25 points)
-The model optimization and evaluation process showing iterative changes made to the model and the resulting changes in model performance is documented in either a CSV/Excel table or in the Python script itself (15 points)
+The SQL folder comprises scripts for querying and preprocessing data from databases. These queries are essential for providing in depth insights of analyzig data.
+Machine Learning Models:
 
-Overall model performance is printed or displayed at the end of the script (10 points)
+This section contains Python scripts implementing machine learning algorithms for CVD risk prediction. The models are trained on historical data and can be used to predict the likelihood of an individual developing CVD based on various features such as age, weight, height, blood pressure, cholesterol levels, glucose levels and levels of activity.
+Tableau Visualizations:
 
-GitHub Documentation (25 points)
-GitHub repository is free of unnecessary files and folders and has an appropriate .gitignore in use (10 points)
+The Tableau link contains visualization files showcasing insights derived from the data analysis. These interactive dashboards provide a comprehensive overview of CVD risk factors and predictions.
 
-The README is customized as a polished presentation of the content of the project (15 points)
-
-Group Presentation (25 points)
-All group members speak during the presentation. (5 points)
-
-Content, transitions, and conclusions flow smoothly within any time restrictions. (5 points)
-
-The content is relevant to the project. (10 points)
-
-The presentation maintains audience interest. (5 points)
