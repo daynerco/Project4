@@ -9,5 +9,4 @@
     <li>
         Stored our csv file in AWS S3, uploaded it to Dynamo DB, and retrived the data using AWS API Gateway and Lambda function for data visualizations.
     </li>
-
 </ol>
