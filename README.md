@@ -9,16 +9,17 @@ Cardiovascular Disease (CVD) remains a leading cause of mortality globally. Iden
 
 Repository Contents:
 
-Data:
+**Data:**
 
 https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset/data
-SQL Queries:
+
+**SQL Queries**
 
 The SQL folder comprises scripts for querying and preprocessing data from databases. These queries are essential for providing in depth insights of analyzig data.
-Machine Learning Models:
+**Machine Learning Model**
 
 This section contains Python scripts implementing machine learning algorithms for CVD risk prediction. The models are trained on historical data and can be used to predict the likelihood of an individual developing CVD based on various features such as age, weight, height, blood pressure, cholesterol levels, glucose levels and levels of activity.
-Tableau Visualizations:
+**Tableau Visualizations:**
 
 The Tableau link contains visualization files showcasing insights derived from the data analysis. These interactive dashboards provide a comprehensive overview of CVD risk factors and predictions.
 
