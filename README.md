@@ -15,7 +15,7 @@ https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset/data
 
 **SQL Queries**
 
-The SQL folder comprises scripts for querying and preprocessing data from databases. These queries are essential for providing in depth insights of analyzig data.
+The SQL file comprises scripts for querying and preprocessing data from databases. These queries are essential for providing in depth insights of analyzig data.
 
 **Machine Learning Model**
 
