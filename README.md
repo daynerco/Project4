@@ -1,5 +1,4 @@
-# Project4
-<h1>David's Contribution</h1>
+# Project4: David's Contributions
 <ol>
     <li>
         Created many different machine learning models and decided on a deep learning model with 72% validation accuracy and uploaded to a webapp using Tensorflow.js
