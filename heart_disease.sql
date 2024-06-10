@@ -109,7 +109,7 @@ FROM cardio_features
 WHERE cardio = 1
 GROUP BY gender_category;
 
--- Determine the average height (kg) of female and male patients with cardio disease.
+-- Determine the average height (cm) of female and male patients with cardio disease.
 SELECT CASE 
 WHEN gender = 1 THEN 'Female'
 WHEN gender = 2 THEN 'Male'  
