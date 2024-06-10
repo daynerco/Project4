@@ -98,7 +98,7 @@ function App() {
 
         <div className='GraphContainer'>
           <BoxPlot cardioData = {ageDistributionData} title = {"Cardio Disease Age Distribution"} xtitle={"Age"}></BoxPlot>
-          <BoxPlot cardioData = {weightDistributionData} title = {"Cardio Disease Weight Distribution"} xtitle={"Weight"}></BoxPlot>
+          <BoxPlot cardioData = {weightDistributionData} title = {"Cardio Disease Weight Distribution"} xtitle={"Weight (kg)"}></BoxPlot>
           <PieChart cardioData = {genderDistributionData} title = {"Gender Distribution"} labels = {["Male", "Female"]}></PieChart>
 
           <BarChart labels = {["Smoke", "No Smoke"]} cardioData = {smokeDistributionData} title = {"Cardio Disease Smoke Distribution"} xtitle={"Smoke"} ytitle={"Count"}></BarChart>
