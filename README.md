@@ -1,9 +1,8 @@
 =======
 # Project4
-Shared repo for Project 4 - Data Insighters
-
 Topic: Heart Disease ML Analysis 
  [Tableau Visualizations] (https://public.tableau.com/views/CardiovascularDiseaseViz/SmokesbyGender?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link)
+ [WebApp] (https://data-insiders.web.app/)
 
 **Introduction**
 Cardiovascular Disease (CVD) remains a leading cause of mortality globally. Identifying individuals at risk of developing CVD is crucial for preventive interventions. This project focuses on implementing a combination of machine learning techniques, SQL queries, and Tableau visualizations to analyze CVD risk factors and predict individuals' risk levels.
