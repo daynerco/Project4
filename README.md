@@ -1,7 +1,7 @@
 # Project4: David's Contributions
 <ol>
     <li>
-                Created many different machine learning models and optimized  a deep learning model with 72% validation accuracy, which was uploaded to the [Webapp](https://data-insiders.web.app/) using Tensorflow.js
+                Created many different machine learning models and optimized  a deep learning model with 72% validation accuracy, which was uploaded to the Webapp (https://data-insiders.web.app/) using Tensorflow.js
     </li>
     <li>
         Created a React App that showcases our deep learning model and different visualizations.
