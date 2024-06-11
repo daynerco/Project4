@@ -1,7 +1,7 @@
 # Project4
 <h1> WebApp: (https://data-insiders.web.app/)</h1>
 
-<h3> Topic: Heart Disease ML Analysis  </h3>
+<h2> Topic: Heart Disease ML Analysis  </h2>
  [Tableau Visualizations] (https://public.tableau.com/views/CardiovascularDiseaseViz/SmokesbyGender?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link)
 
 <h3> Introduction </h3>
