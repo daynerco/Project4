@@ -6,10 +6,9 @@
     <li>The tfjs_model folder is the model that we uploaded in the React Web App</li>
 </ol>
 
-<h2> 
-      WebApp: (https://data-insiders.web.app/)
-     <p>The WebApp uses tensorflowjs so we can run ML predictions on the web. We also saved our csv file in AWS S3, uploaded it to Dynamo DB, and retrived the data using AWS API Gateway and Lambda function for data visualizations.</p>
-</h2>
+<h2> WebApp: (https://data-insiders.web.app/) </h2>
+
+<p>The WebApp uses tensorflowjs so we can run ML predictions on the web. We also saved our csv file in AWS S3, uploaded it to Dynamo DB, and retrived the data using AWS API Gateway and Lambda function for data visualizations.</p>
 
 
 <h2> Topic: Heart Disease ML Analysis  </h2>
