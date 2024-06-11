@@ -1,5 +1,6 @@
 # Project4
 <h1> WebApp: (https://data-insiders.web.app/)</h1>
+<h2> The WebApp uses tensorflowjs so we can run ML predictions on the web. We also saved our csv file in AWS S3, uploaded it to Dynamo DB, and retrived the data using AWS API Gateway and Lambda function for data visualizations.</h2>
 
 <h2> Topic: Heart Disease ML Analysis  </h2>
  [Tableau Visualizations] (https://public.tableau.com/views/CardiovascularDiseaseViz/SmokesbyGender?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link)
